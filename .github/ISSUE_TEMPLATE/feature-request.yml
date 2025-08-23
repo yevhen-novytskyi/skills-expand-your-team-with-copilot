@@ -1,0 +1,175 @@
+name: ✨ Feature Request
+description: Request a new feature or functionality for the activities system
+title: "[FEATURE] "
+labels: ["enhancement", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        
+        Use this template to request new features or functionality for the Mergington High School activities system.
+        
+        **Before submitting:** Please describe your idea clearly and explain why it would be valuable so our Copilot coding agent can implement it effectively.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: Describe the new feature you'd like to see added
+      placeholder: |
+        Clearly explain what you want the system to be able to do that it can't do now.
+        
+        Example: "I would like the ability to export a list of all students registered for activities so I can create attendance sheets and communicate with parents."
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: Current Problem or Need
+      description: What problem would this feature solve? What need would it address?
+      placeholder: |
+        Explain why this feature is needed:
+        - What task is currently difficult or impossible?
+        - What would this feature help you accomplish?
+        - How would it improve your work or student experience?
+        
+        Example: "Currently, I have to manually write down student names from the website to track attendance, which is time-consuming and error-prone."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - Data export/reporting
+        - Communication tools
+        - Student management
+        - Activity scheduling
+        - User interface improvement
+        - Mobile app functionality
+        - Administrative tools
+        - Parent/guardian features
+        - Attendance tracking
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-requirements
+    attributes:
+      label: Detailed Requirements
+      description: Describe exactly how you envision this feature working
+      placeholder: |
+        Provide specific details about:
+        - What buttons or options should be available?
+        - What information should be included?
+        - How should users interact with this feature?
+        - What should the output look like?
+        
+        Example: "There should be an 'Export Students' button on each activity page that downloads a CSV file with student names, emails, phone numbers, and emergency contacts."
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: Describe who would use this feature and how they would use it
+      placeholder: |
+        Format: "As a [type of user], I want [feature] so that [benefit]"
+        
+        Example: "As a teacher managing Chess Club, I want to export student contact information so that I can quickly communicate schedule changes to parents."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: who-benefits
+    attributes:
+      label: Who Would Benefit?
+      description: Who would primarily use or benefit from this feature?
+      options:
+        - Teachers only
+        - Students only
+        - Parents/guardians only
+        - Teachers and students
+        - Teachers and parents
+        - Everyone (teachers, students, parents)
+        - Administrators only
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority-level
+    attributes:
+      label: Priority Level
+      description: How important is this feature for your daily work?
+      options:
+        - Critical - Essential for basic operations
+        - High - Would significantly improve efficiency
+        - Medium - Would be helpful but not urgent
+        - Low - Nice to have when time permits
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Alternative Solutions Considered
+      description: Have you considered other ways to solve this problem?
+      placeholder: |
+        Describe any other approaches you've thought about:
+        - Manual workarounds you currently use
+        - Other software or tools you've considered
+        - Simpler alternatives that might also work
+        
+        Example: "I've considered using a separate spreadsheet, but it would be time-consuming to keep it updated with the website data."
+    validations:
+      required: false
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: How will you know when this feature is working successfully?
+      placeholder: |
+        Describe what success looks like:
+        - What specific actions should be possible?
+        - What results should be produced?
+        - How should the feature perform?
+        
+        Example: "Success means I can click one button and get a complete, accurate list of student contact information that I can use for communications."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Check all that apply for when this feature will be considered complete
+      options:
+        - label: Feature is accessible from the appropriate page/location
+        - label: Feature works reliably without errors
+        - label: Feature produces the expected output/results
+        - label: Feature is easy to understand and use
+        - label: Feature works on different devices (desktop, tablet, mobile)
+        - label: Feature integrates well with existing functionality
+        - label: Feature includes appropriate error handling
+        - label: Feature has been tested with real data
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this feature
+      placeholder: |
+        Include details like:
+        - Examples from other software you've used
+        - Specific requirements or constraints
+        - Related features that might be impacted
+        - Timeline considerations
+    validations:
+      required: false

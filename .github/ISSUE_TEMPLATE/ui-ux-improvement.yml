@@ -1,0 +1,196 @@
+name: 🎨 UI/UX Improvement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["ui-ux", "enhancement", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## UI/UX Improvement Request
+        
+        Use this template to request improvements to how the activities system looks or how users interact with it.
+        
+        **Before submitting:** Please describe the visual or experience changes you'd like so our Copilot coding agent can implement them effectively.
+
+  - type: dropdown
+    id: improvement-type
+    attributes:
+      label: Type of Improvement
+      description: What aspect of the user interface or experience would you like to improve?
+      options:
+        - Visual appearance/styling
+        - Button or link placement
+        - Page layout/organization
+        - Navigation between pages
+        - Mobile device display
+        - Color scheme or fonts
+        - Form design/usability
+        - Information display
+        - Accessibility features
+        - Loading speed/performance
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: Describe how things currently look or work
+      placeholder: |
+        Describe what you see now:
+        - Which page or section are you referring to?
+        - What currently doesn't look right or work well?
+        - What makes it difficult or confusing to use?
+        
+        Example: "The activity cards on the main page are too small and cramped together, making it hard to read the activity details, especially on mobile phones."
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-improvement
+    attributes:
+      label: Desired Improvement
+      description: Describe exactly how you'd like things to look or work instead
+      placeholder: |
+        Be specific about your vision:
+        - How should it look differently?
+        - How should users interact with it?
+        - What should be easier or more convenient?
+        
+        Example: "Activity cards should be larger with more spacing between them, bigger fonts for the activity names, and better organization of the schedule and description information."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-users
+    attributes:
+      label: Who Is Affected?
+      description: Which users experience this UI/UX issue?
+      options:
+        - Teachers only
+        - Students only
+        - Both teachers and students
+        - Mobile users specifically
+        - Desktop users specifically
+        - All users regardless of device
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-focus
+    attributes:
+      label: Device Focus
+      description: Is this improvement particularly needed for certain devices?
+      options:
+        - All devices equally
+        - Mobile phones primarily
+        - Tablets primarily
+        - Desktop computers primarily
+        - Both mobile and tablet
+    validations:
+      required: true
+
+  - type: textarea
+    id: usability-impact
+    attributes:
+      label: Usability Impact
+      description: How does the current design make tasks difficult or confusing?
+      placeholder: |
+        Explain the usability problems:
+        - What tasks are harder than they should be?
+        - What causes confusion or frustration?
+        - How much extra time or effort is required?
+        
+        Example: "Students often miss important activity information because the text is too small, and they have to scroll horizontally on their phones to see everything."
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific-elements
+    attributes:
+      label: Specific Elements to Change
+      description: Identify the specific buttons, text, colors, or layouts that need improvement
+      placeholder: |
+        Be precise about what should change:
+        - Which buttons need to be different?
+        - What text should be larger or repositioned?
+        - Which colors should be changed?
+        - How should the layout be reorganized?
+        
+        Example: "The 'Register Student' button should be bigger and green instead of gray, and the activity description text should be larger and have more line spacing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: visual-examples
+    attributes:
+      label: Visual Examples or References
+      description: Describe examples of good design or provide references
+      placeholder: |
+        If you have examples of how you'd like it to look:
+        - Describe other websites with good design
+        - Reference specific design patterns you like
+        - Explain visual styles that would work better
+        
+        Example: "The activity cards should look similar to how Netflix shows movie options - clear images, readable text, and easy-to-find action buttons."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority-level
+    attributes:
+      label: Priority Level
+      description: How important is this improvement?
+      options:
+        - Critical - Current design prevents essential tasks
+        - High - Significantly impacts daily usability
+        - Medium - Would improve user experience noticeably
+        - Low - Minor improvement that would be nice to have
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Check what needs to be achieved for this improvement to be considered complete
+      options:
+        - label: Visual appearance is improved as described
+        - label: User interactions are easier and more intuitive
+        - label: Information is easier to read and understand
+        - label: Design works well on mobile devices
+        - label: Design works well on desktop computers
+        - label: Changes maintain existing functionality
+        - label: New design is consistent with overall site style
+        - label: Improvement addresses the usability issues identified
+
+  - type: textarea
+    id: constraints-considerations
+    attributes:
+      label: Constraints and Considerations
+      description: Any limitations or requirements to keep in mind
+      placeholder: |
+        Consider factors like:
+        - School branding requirements (colors, logos, etc.)
+        - Accessibility needs for students with disabilities
+        - Technical limitations to be aware of
+        - Consistency with other school systems
+        
+        Example: "The design should maintain the school colors (blue and gold) and ensure text is large enough for students with visual impairments."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this improvement
+      placeholder: |
+        Include details like:
+        - Feedback you've received from students or other teachers
+        - Specific situations where the current design fails
+        - Related improvements that might be needed
+        - Timeline considerations
+    validations:
+      required: false

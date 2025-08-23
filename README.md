@@ -33,5 +33,23 @@
 
 ---
 
+## 📋 For Mergington High School Teachers
+
+**Need to request changes to the activities system?** 
+
+We've created easy-to-use issue templates that guide you through requesting changes without needing to understand code. Our GitHub Copilot coding agent can implement your requests based on the structured information you provide.
+
+**🚀 [Create a New Request](../../issues/new/choose)** - Choose from our teacher-friendly templates:
+
+- 📚 **Activity Management** - Add, modify, or remove activities
+- 🐛 **Bug Report** - Report problems or issues  
+- ✨ **Feature Request** - Request new functionality
+- 🎨 **UI/UX Improvement** - Improve website appearance or usability
+- 📊 **Data Management** - Change how information is stored or displayed
+
+**📖 [Teacher Guide](docs/teacher-issue-templates.md)** - Learn how to use the templates effectively
+
+---
+
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
 
