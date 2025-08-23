@@ -1,0 +1,131 @@
+name: 📚 Activity Management
+description: Add, modify, or remove extracurricular activities from the system
+title: "[ACTIVITY] "
+labels: ["activity-management", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Activity Management Request
+        
+        Use this template to request changes to extracurricular activities in the Mergington High School system.
+        
+        **Before submitting:** Please provide as much detail as possible so our Copilot coding agent can implement your request without needing clarification.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Type of Request
+      description: What would you like to do with an activity?
+      options:
+        - Add a new activity
+        - Modify an existing activity
+        - Remove an activity
+        - Change activity schedule
+        - Update participant capacity
+        - Modify activity description
+    validations:
+      required: true
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: The name of the activity (for new activities, provide your desired name)
+      placeholder: "e.g., Chess Club, Robotics Team, Art Class"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-details
+    attributes:
+      label: Current Activity Details (if modifying existing)
+      description: If you're modifying an existing activity, describe what it currently looks like
+      placeholder: |
+        Current description: Learn strategies and compete in chess tournaments
+        Current schedule: Mondays and Fridays, 3:15 PM - 4:45 PM
+        Current capacity: 12 students
+        Current participants: 8 students enrolled
+    validations:
+      required: false
+
+  - type: textarea
+    id: desired-changes
+    attributes:
+      label: Desired Changes or New Activity Details
+      description: Describe exactly what you want the activity to look like after the changes
+      placeholder: |
+        For new activities, include:
+        - Activity description
+        - Meeting schedule (days and times)
+        - Maximum number of participants
+        - Any special requirements
+        
+        For modifications, describe what should change:
+        - New description
+        - New schedule
+        - New capacity limits
+        - Other changes needed
+    validations:
+      required: true
+
+  - type: input
+    id: schedule
+    attributes:
+      label: Schedule Details
+      description: When does this activity meet? (Be specific about days and times)
+      placeholder: "e.g., Tuesdays and Thursdays, 7:00 AM - 8:00 AM"
+    validations:
+      required: true
+
+  - type: input
+    id: capacity
+    attributes:
+      label: Maximum Participants
+      description: How many students can participate in this activity?
+      placeholder: "e.g., 15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Request
+      description: Why is this change needed? This helps us understand the context.
+      placeholder: "e.g., Student interest has grown, need to accommodate more participants, activity time conflicts with other events"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How urgent is this request?
+      options:
+        - Low - Can wait until next trimester
+        - Medium - Needed within a few weeks
+        - High - Needed immediately
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Check all that apply for when this request will be considered complete
+      options:
+        - label: Activity appears in the student activity list
+        - label: Students can sign up for the activity
+        - label: Activity details display correctly (schedule, description, capacity)
+        - label: Teachers can manage student registrations
+        - label: Activity follows school schedule constraints
+        - label: System properly handles capacity limits
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might be helpful for implementing this request
+      placeholder: "e.g., This activity is related to an existing program, equipment requirements, special permissions needed"
+    validations:
+      required: false

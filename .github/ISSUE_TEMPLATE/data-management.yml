@@ -1,0 +1,214 @@
+name: 📊 Data Management
+description: Request changes to how information is stored, displayed, or exported
+title: "[DATA] "
+labels: ["data-management", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Data Management Request
+        
+        Use this template to request changes to how student, activity, or other information is stored, displayed, or exported from the activities system.
+        
+        **Before submitting:** Please describe your data needs clearly so our Copilot coding agent can implement the appropriate solution.
+
+  - type: dropdown
+    id: data-request-type
+    attributes:
+      label: Type of Data Request
+      description: What kind of data management change do you need?
+      options:
+        - Add new information fields
+        - Change how existing information is displayed
+        - Export data to files (CSV, PDF, etc.)
+        - Import data from external sources
+        - Modify data validation rules
+        - Change data organization/grouping
+        - Add data filtering/search options
+        - Create data reports
+        - Archive or delete old data
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data-type
+    attributes:
+      label: What Data Is Involved?
+      description: Which type of information does this request affect?
+      options:
+        - Student information (names, emails, contacts)
+        - Activity details (descriptions, schedules, capacity)
+        - Registration/participation data
+        - Teacher/staff information
+        - Attendance records
+        - Communication logs
+        - System usage data
+        - All of the above
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-data-situation
+    attributes:
+      label: Current Data Situation
+      description: Describe how the data is currently handled
+      placeholder: |
+        Explain the current state:
+        - What information is currently captured?
+        - How is it currently displayed or organized?
+        - What data management tasks are difficult now?
+        
+        Example: "Currently, we only store student email addresses, but we need phone numbers and emergency contacts for communication during activities."
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-data-changes
+    attributes:
+      label: Desired Data Changes
+      description: Describe exactly what you want to change about the data
+      placeholder: |
+        Be specific about your requirements:
+        - What new information should be collected?
+        - How should existing information be displayed differently?
+        - What data operations should be possible?
+        - What format should exports be in?
+        
+        Example: "Add fields for student phone numbers, parent/guardian names and contacts, and grade level. Display this information in a table format that can be exported to Excel for emergency contact lists."
+    validations:
+      required: true
+
+  - type: textarea
+    id: data-collection-requirements
+    attributes:
+      label: Data Collection Requirements
+      description: If adding new data fields, how should this information be collected?
+      placeholder: |
+        For new data fields, specify:
+        - Should students enter this when registering?
+        - Should teachers enter this information?
+        - Is this information required or optional?
+        - Are there any validation rules? (format, length, etc.)
+        
+        Example: "Phone numbers should be entered by students during registration, should be required, and should follow the format (XXX) XXX-XXXX."
+    validations:
+      required: false
+
+  - type: textarea
+    id: data-display-requirements
+    attributes:
+      label: Data Display Requirements
+      description: How should the information be shown to users?
+      placeholder: |
+        Describe how data should appear:
+        - Which information should be visible to students vs. teachers?
+        - How should it be organized on the page?
+        - Should it be sortable or searchable?
+        - Are there privacy considerations?
+        
+        Example: "Emergency contact information should only be visible to teachers, not students. Teachers should be able to sort students by grade level and search by student name."
+    validations:
+      required: false
+
+  - type: textarea
+    id: export-requirements
+    attributes:
+      label: Export/Report Requirements
+      description: If you need to export data, what format and content is needed?
+      placeholder: |
+        For data exports, specify:
+        - What file format? (Excel, CSV, PDF, etc.)
+        - Which information should be included?
+        - How should it be organized?
+        - Who should have access to export?
+        
+        Example: "Teachers should be able to export a CSV file with student names, emails, phone numbers, and emergency contacts for their specific activities."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: data-privacy-level
+    attributes:
+      label: Data Privacy Level
+      description: How sensitive is this information?
+      options:
+        - Public - OK for students to see each other's information
+        - Limited - Only teachers should see this information
+        - Confidential - Only specific authorized teachers
+        - Emergency - Only for emergency situations
+    validations:
+      required: true
+
+  - type: textarea
+    id: business-justification
+    attributes:
+      label: Business Justification
+      description: Why is this data change needed? What problem does it solve?
+      placeholder: |
+        Explain the need:
+        - What tasks are currently difficult or impossible?
+        - How will this improve operations?
+        - What requirements or policies does this address?
+        
+        Example: "School policy requires us to have emergency contact information for all students in extracurricular activities, and we need quick access during activities in case of accidents."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency-level
+    attributes:
+      label: Urgency Level
+      description: How soon is this data change needed?
+      options:
+        - Immediate - Required for compliance or safety
+        - High - Needed within 2 weeks
+        - Medium - Needed within a month
+        - Low - Can be implemented when convenient
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Check what needs to work for this data management request to be considered complete
+      options:
+        - label: New data fields are added and work correctly
+        - label: Data is displayed as requested
+        - label: Data validation works as specified
+        - label: Export functionality produces correct output
+        - label: Privacy/security requirements are met
+        - label: Data can be easily searched/filtered as needed
+        - label: Teachers can access the data they need for their work
+        - label: System performance is not negatively impacted
+
+  - type: textarea
+    id: data-migration
+    attributes:
+      label: Existing Data Considerations
+      description: Are there existing records that need to be updated or migrated?
+      placeholder: |
+        Consider current data:
+        - Are there existing student records that need updating?
+        - Should old data be preserved or can it be reset?
+        - How should missing information be handled?
+        
+        Example: "There are already 150 students registered for activities. The new fields can start empty and be filled in as students update their information."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this data management change
+      placeholder: |
+        Include details like:
+        - Related school policies or requirements
+        - Integration with other school systems
+        - Compliance requirements (FERPA, etc.)
+        - Examples from other similar systems
+    validations:
+      required: false

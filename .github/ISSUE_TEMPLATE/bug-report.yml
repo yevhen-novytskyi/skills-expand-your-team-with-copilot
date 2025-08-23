@@ -1,0 +1,158 @@
+name: 🐛 Bug Report
+description: Report a problem or issue with the activities system
+title: "[BUG] "
+labels: ["bug", "teacher-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        
+        Use this template to report problems or issues with the Mergington High School activities system.
+        
+        **Before submitting:** Please provide specific details about what's not working so our Copilot coding agent can diagnose and fix the issue effectively.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: Clearly describe what's not working or what problem you're experiencing
+      placeholder: |
+        Be specific about:
+        - What you were trying to do
+        - What you expected to happen
+        - What actually happened instead
+        
+        Example: "When I try to register a student for Chess Club, I get an error message and the student doesn't get added to the participant list."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: Affected Area
+      description: Which part of the system has the problem?
+      options:
+        - Activity list display
+        - Student registration
+        - Teacher login
+        - Activity details/information
+        - Search and filtering
+        - Student unregistration
+        - Overall website loading
+        - Mobile device display
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the exact steps someone else can follow to see the same problem
+      placeholder: |
+        1. Go to the activities page
+        2. Click on "Chess Club"
+        3. Click "Register Student"
+        4. Enter student email: john@mergington.edu
+        5. Click submit
+        6. See error message: "Failed to register student"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How Often Does This Happen?
+      description: Is this a consistent problem or does it happen sometimes?
+      options:
+        - Always (every time I try)
+        - Sometimes (happens occasionally)
+        - Once (happened one time)
+        - Unsure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: Device Type
+      description: What device were you using when this happened?
+      options:
+        - Desktop computer
+        - Laptop
+        - Tablet
+        - Mobile phone
+        - Unsure
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Web Browser
+      description: Which web browser were you using? (Chrome, Firefox, Safari, Edge, etc.)
+      placeholder: "e.g., Chrome, Firefox, Safari"
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: If you saw any error messages, copy them exactly here
+      placeholder: |
+        Copy and paste any error messages you saw, including:
+        - Pop-up messages
+        - Text that appeared in red
+        - Any error codes or technical messages
+    validations:
+      required: false
+
+  - type: dropdown
+    id: impact-level
+    attributes:
+      label: Impact Level
+      description: How much does this problem affect your work?
+      options:
+        - Critical - Cannot do essential tasks
+        - High - Major disruption to daily work
+        - Medium - Some inconvenience but can work around it
+        - Low - Minor issue that doesn't significantly impact work
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current Workaround
+      description: If you found a way to work around this problem, describe it
+      placeholder: "e.g., I can register students by calling them directly instead of using the website"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Check what needs to work for this bug to be considered fixed
+      options:
+        - label: The reported problem no longer occurs
+        - label: The system works as originally intended
+        - label: No new problems are introduced by the fix
+        - label: The fix works on different devices/browsers
+        - label: Similar scenarios also work correctly
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help diagnose this problem
+      placeholder: |
+        Include details like:
+        - When did this problem first start?
+        - Did anything change recently?
+        - Are other teachers experiencing the same issue?
+        - Screenshots or examples would be helpful
+    validations:
+      required: false
