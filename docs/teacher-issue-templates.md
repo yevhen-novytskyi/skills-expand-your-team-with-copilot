@@ -88,6 +88,7 @@ As teachers at Mergington High School, you don't need to modify the activities s
 If you're unsure which template to use or need help filling out a request:
 
 - **Development Guide**: Check our [development documentation](../docs/how-to-develop.md)
+- **Template Examples**: See [real-world examples](template-examples.md) of how other teachers use the templates
 - **Ask Questions**: Use GitHub Discussions for general questions
 - **Contact IT**: Reach out to the school's IT support team
 
