@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(!isDarkMode);
   }
 
-  // Initialize theme on page load
   applyTheme(isDarkMode);
 
   // Initialize filters from active elements
