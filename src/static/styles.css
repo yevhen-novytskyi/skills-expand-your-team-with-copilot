@@ -32,6 +32,40 @@
   --info-light: #d1ecf1;
 }
 
+/* Dark mode color palette */
+[data-theme="dark"] {
+  /* Primary colors - slightly brighter for dark background */
+  --primary: #4054b2;
+  --primary-light: #6c7ec7;
+  --primary-dark: #2e3a8a;
+  --primary-text: #ffffff;
+
+  /* Secondary colors */
+  --secondary: #ff8a50;
+  --secondary-light: #ffb374;
+  --secondary-dark: #e65100;
+  --secondary-text: #ffffff;
+
+  /* Neutral colors - dark theme */
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border: #333333;
+  --border-light: #2a2a2a;
+  --border-focus: #404040;
+
+  /* Feedback colors - adjusted for dark theme */
+  --success: #4caf50;
+  --success-light: #2e2e2e;
+  --warning: #ff9800;
+  --warning-light: #2e2e2e;
+  --error: #f44336;
+  --error-light: #2e2e2e;
+  --info: #2196f3;
+  --info-light: #2e2e2e;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -663,4 +697,38 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.theme-icon {
+  font-size: 1rem;
+}
+
+/* Dark mode adjustments for theme toggle */
+[data-theme="dark"] #theme-toggle {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] #theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
