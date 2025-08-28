@@ -51,6 +51,76 @@ document.addEventListener("DOMContentLoaded", () => {
     weekend: { days: ["Saturday", "Sunday"] }, // Weekend days
   };
 
+  // Application configuration constants
+  const APP_CONFIG = {
+    schoolName: "Mergington High School",
+    currentYear: "2023-2024",
+    maxActivitiesPerStudent: 5,
+    registrationDeadlineDays: 7,
+    apiBaseUrl: "/api",
+    version: "1.0.0"
+  };
+
+  // API endpoints configuration
+  const API_ENDPOINTS = {
+    activities: "/activities",
+    signup: "/activities/{activity}/signup",
+    auth: "/auth",
+    validate: "/auth/validate"
+  };
+
+  // UI state management variables
+  let isLoading = false;
+  let isModalOpen = false;
+  let lastRefreshTime = null;
+  let searchDebounceTimer = null;
+  let autoRefreshInterval = null;
+
+  // Performance and caching variables
+  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+  let activitiesCache = {
+    data: null,
+    timestamp: null,
+    isValid: function() {
+      return this.data && this.timestamp && 
+             (Date.now() - this.timestamp) < CACHE_DURATION;
+    }
+  };
+
+  // Error handling constants
+  const ERROR_MESSAGES = {
+    networkError: "Network connection failed. Please check your internet connection.",
+    serverError: "Server error occurred. Please try again later.",
+    authError: "Authentication failed. Please log in again.",
+    validationError: "Please check your input and try again.",
+    timeoutError: "Request timed out. Please try again.",
+    genericError: "An unexpected error occurred. Please try again."
+  };
+
+  // Animation and timing constants
+  const ANIMATION_DURATION = {
+    fast: 200,
+    normal: 300,
+    slow: 500,
+    modal: 400
+  };
+
+  const TIMEOUTS = {
+    messageDisplay: 5000,
+    searchDebounce: 300,
+    autoRefresh: 30000,
+    apiRequest: 10000
+  };
+
+  // Feature flags for future functionality
+  const FEATURE_FLAGS = {
+    enableAutoRefresh: true,
+    enableOfflineMode: false,
+    enableNotifications: false,
+    enableDarkMode: false,
+    enableAdvancedSearch: true
+  };
+
   // Initialize filters from active elements
   function initializeFilters() {
     // Initialize day filter
@@ -197,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return true;
     } catch (error) {
       console.error("Error during login:", error);
-      showLoginMessage("Login failed. Please try again.", "error");
+      showLoginMessage(ERROR_MESSAGES.authError, "error");
       return false;
     }
   }
@@ -404,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
       displayFilteredActivities();
     } catch (error) {
       activitiesList.innerHTML =
-        "<p>Failed to load activities. Please try again later.</p>";
+        `<p>${ERROR_MESSAGES.networkError}</p>`;
       console.error("Error fetching activities:", error);
     }
   }
@@ -646,6 +716,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalActivityName.textContent = activityName;
     activityInput.value = activityName;
     registrationModal.classList.remove("hidden");
+    isModalOpen = true;
+    
     // Add slight delay to trigger animation
     setTimeout(() => {
       registrationModal.classList.add("show");
@@ -658,7 +730,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       registrationModal.classList.add("hidden");
       signupForm.reset();
-    }, 300);
+      isModalOpen = false;
+    }, ANIMATION_DURATION.modal);
   }
 
   // Event listener for close button
@@ -805,10 +878,10 @@ document.addEventListener("DOMContentLoaded", () => {
     messageDiv.className = `message ${type}`;
     messageDiv.classList.remove("hidden");
 
-    // Hide message after 5 seconds
+    // Hide message after configured timeout
     setTimeout(() => {
       messageDiv.classList.add("hidden");
-    }, 5000);
+    }, TIMEOUTS.messageDisplay);
   }
 
   // Handle form submission
@@ -847,10 +920,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Refresh the activities list after successful signup
         fetchActivities();
       } else {
-        showMessage(result.detail || "An error occurred", "error");
+        showMessage(result.detail || ERROR_MESSAGES.serverError, "error");
       }
     } catch (error) {
-      showMessage("Failed to sign up. Please try again.", "error");
+      showMessage(ERROR_MESSAGES.networkError, "error");
       console.error("Error signing up:", error);
     }
   });
@@ -861,7 +934,26 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeRangeFilter,
   };
 
+  // Initialize app configuration
+  function initializeAppConfig() {
+    // Update page title with school name and year
+    document.title = `${APP_CONFIG.schoolName} Activities - ${APP_CONFIG.currentYear}`;
+    
+    // Set last refresh time
+    lastRefreshTime = Date.now();
+    
+    // Initialize auto-refresh if enabled
+    if (FEATURE_FLAGS.enableAutoRefresh) {
+      autoRefreshInterval = setInterval(() => {
+        if (!isModalOpen && !isLoading) {
+          fetchActivities();
+        }
+      }, TIMEOUTS.autoRefresh);
+    }
+  }
+
   // Initialize app
+  initializeAppConfig();
   checkAuthentication();
   initializeFilters();
   fetchActivities();
