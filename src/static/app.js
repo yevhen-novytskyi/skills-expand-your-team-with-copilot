@@ -25,6 +25,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
 
+  // Dark mode elements
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.querySelector(".theme-icon");
+
+  // Dark mode functionality
+  function initializeDarkMode() {
+    // Check saved preference or default to light mode
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    // Apply dark mode if saved preference is dark, or if no preference and system prefers dark
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      enableDarkMode();
+    } else {
+      disableDarkMode();
+    }
+  }
+
+  function enableDarkMode() {
+    document.body.classList.add("dark-mode");
+    themeIcon.textContent = "☀️"; // Sun icon for switching to light mode
+    localStorage.setItem("theme", "dark");
+  }
+
+  function disableDarkMode() {
+    document.body.classList.remove("dark-mode");
+    themeIcon.textContent = "🌙"; // Moon icon for switching to dark mode
+    localStorage.setItem("theme", "light");
+  }
+
+  function toggleDarkMode() {
+    if (document.body.classList.contains("dark-mode")) {
+      disableDarkMode();
+    } else {
+      enableDarkMode();
+    }
+  }
+
+  // Event listener for theme toggle
+  themeToggle.addEventListener("click", toggleDarkMode);
+
   // Activity categories with corresponding colors
   const activityTypes = {
     sports: { label: "Sports", color: "#e8f5e9", textColor: "#2e7d32" },
@@ -862,6 +903,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Initialize app
+  initializeDarkMode();
   checkAuthentication();
   initializeFilters();
   fetchActivities();
