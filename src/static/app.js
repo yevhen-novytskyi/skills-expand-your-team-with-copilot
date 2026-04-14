@@ -4,11 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const modeIcon = darkModeToggle.querySelector(".mode-icon");
   const modeText = darkModeToggle.querySelector(".mode-text");
 
-  // Check for saved dark mode preference
+  // Update button to reflect dark mode state already applied by inline head script
   function loadDarkModePreference() {
-    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    const isDarkMode = document.documentElement.classList.contains("dark-mode");
     if (isDarkMode) {
-      document.body.classList.add("dark-mode");
       updateDarkModeButton(true);
     }
   }
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Toggle dark mode
   function toggleDarkMode() {
-    const isDarkMode = document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.documentElement.classList.toggle("dark-mode");
     localStorage.setItem("darkMode", isDarkMode);
     updateDarkModeButton(isDarkMode);
   }

@@ -33,7 +33,7 @@
 }
 
 /* Dark mode color palette */
-body.dark-mode {
+html.dark-mode {
   /* Primary colors */
   --primary: #5c6bc0;
   --primary-light: #8e99f3;
