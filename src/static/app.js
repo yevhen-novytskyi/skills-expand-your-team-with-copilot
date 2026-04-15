@@ -1,4 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dark mode functionality
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const modeIcon = darkModeToggle.querySelector(".mode-icon");
+  const modeText = darkModeToggle.querySelector(".mode-text");
+
+  // Update button to reflect dark mode state already applied by inline head script
+  function loadDarkModePreference() {
+    const isDarkMode = document.documentElement.classList.contains("dark-mode");
+    if (isDarkMode) {
+      updateDarkModeButton(true);
+    }
+  }
+
+  // Update dark mode button appearance
+  function updateDarkModeButton(isDark) {
+    if (isDark) {
+      modeIcon.textContent = "☀️";
+      modeText.textContent = "Light";
+    } else {
+      modeIcon.textContent = "🌙";
+      modeText.textContent = "Dark";
+    }
+  }
+
+  // Toggle dark mode
+  function toggleDarkMode() {
+    const isDarkMode = document.documentElement.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode);
+    updateDarkModeButton(isDarkMode);
+  }
+
+  // Add event listener to toggle button
+  darkModeToggle.addEventListener("click", toggleDarkMode);
+
+  // Load preference on page load
+  loadDarkModePreference();
+
   // DOM elements
   const activitiesList = document.getElementById("activities-list");
   const messageDiv = document.getElementById("message");

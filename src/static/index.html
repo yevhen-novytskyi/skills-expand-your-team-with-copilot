@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mergington High School Activities</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
   </head>
   <body>
     <header>
+      <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="mode-icon">🌙</span>
+        <span class="mode-text">Dark</span>
+      </button>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
       <div id="user-controls">
