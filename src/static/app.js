@@ -25,13 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
 
-  // Activity categories with corresponding colors
+  // Theme toggle element
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.querySelector(".theme-icon");
+
+  // Activity categories — colors are defined in CSS (.activity-tag--<type>)
   const activityTypes = {
-    sports: { label: "Sports", color: "#e8f5e9", textColor: "#2e7d32" },
-    arts: { label: "Arts", color: "#f3e5f5", textColor: "#7b1fa2" },
-    academic: { label: "Academic", color: "#e3f2fd", textColor: "#1565c0" },
-    community: { label: "Community", color: "#fff3e0", textColor: "#e65100" },
-    technology: { label: "Technology", color: "#e8eaf6", textColor: "#3949ab" },
+    sports: { label: "Sports" },
+    arts: { label: "Arts" },
+    academic: { label: "Academic" },
+    community: { label: "Community" },
+    technology: { label: "Technology" },
   };
 
   // State for activities and filters
@@ -44,12 +48,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Authentication state
   let currentUser = null;
 
+  // Theme state — fall back to OS preference on first visit
+  let isDarkMode =
+    localStorage.getItem("darkMode") !== null
+      ? localStorage.getItem("darkMode") === "true"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   // Time range mappings for the dropdown
   const timeRanges = {
     morning: { start: "06:00", end: "08:00" }, // Before school hours
     afternoon: { start: "15:00", end: "18:00" }, // After school hours
     weekend: { days: ["Saturday", "Sunday"] }, // Weekend days
   };
+
+  // Theme management functions
+  function applyTheme(darkMode) {
+    if (darkMode) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      themeIcon.textContent = "☀️";
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      themeIcon.textContent = "🌙";
+    }
+    themeToggle.setAttribute("aria-pressed", String(darkMode));
+    localStorage.setItem("darkMode", darkMode);
+    isDarkMode = darkMode;
+  }
+
+  function toggleTheme() {
+    applyTheme(!isDarkMode);
+  }
+
+  applyTheme(isDarkMode);
 
   // Initialize filters from active elements
   function initializeFilters() {
@@ -238,6 +268,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loginButton.addEventListener("click", openLoginModal);
   logoutButton.addEventListener("click", logout);
   closeLoginModal.addEventListener("click", closeLoginModalHandler);
+
+  // Event listener for theme toggle
+  themeToggle.addEventListener("click", toggleTheme);
 
   // Close login modal when clicking outside
   window.addEventListener("click", (event) => {
@@ -499,9 +532,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Format the schedule using the new helper function
     const formattedSchedule = formatSchedule(details);
 
-    // Create activity tag
+    // Create activity tag — colour comes from CSS (.activity-tag--<type>)
     const tagHtml = `
-      <span class="activity-tag" style="background-color: ${typeInfo.color}; color: ${typeInfo.textColor}">
+      <span class="activity-tag activity-tag--${activityType}">
         ${typeInfo.label}
       </span>
     `;

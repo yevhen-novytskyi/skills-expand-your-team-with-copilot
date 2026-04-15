@@ -32,6 +32,69 @@
   --info-light: #d1ecf1;
 }
 
+/* Respect OS dark mode preference on first visit (before JS sets data-theme) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #3f51b5;
+    --primary-light: #6573c3;
+    --primary-dark: #2c387e;
+    --primary-text: #ffffff;
+    --secondary: #ff9800;
+    --secondary-light: #ffb74d;
+    --secondary-dark: #f57c00;
+    --secondary-text: #000000;
+    --background: #121212;
+    --surface: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border: #333333;
+    --border-light: #2a2a2a;
+    --border-focus: #555555;
+    --success: #4caf50;
+    --success-light: #2e2e2e;
+    --warning: #ff9800;
+    --warning-light: #2e2e2e;
+    --error: #f44336;
+    --error-light: #2e2e2e;
+    --info: #2196f3;
+    --info-light: #2e2e2e;
+  }
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  /* Primary colors - slightly adjusted for dark mode */
+  --primary: #3f51b5;
+  --primary-light: #6573c3;
+  --primary-dark: #2c387e;
+  --primary-text: #ffffff;
+
+  /* Secondary colors - maintain visibility */
+  --secondary: #ff9800;
+  --secondary-light: #ffb74d;
+  --secondary-dark: #f57c00;
+  --secondary-text: #000000;
+
+  /* Dark neutral colors */
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border: #333333;
+  --border-light: #2a2a2a;
+  --border-focus: #555555;
+
+  /* Dark mode feedback colors */
+  --success: #4caf50;
+  --success-light: #2e2e2e;
+  --warning: #ff9800;
+  --warning-light: #2e2e2e;
+  --error: #f44336;
+  --error-light: #2e2e2e;
+  --info: #2196f3;
+  --info-light: #2e2e2e;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -195,14 +258,34 @@ section h3 {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: #e8eaf6;
-  color: #3949ab;
   font-size: 0.65rem;
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+}
+
+/* Activity tag type colours — light mode */
+.activity-tag--sports    { background-color: #e8f5e9; color: #2e7d32; }
+.activity-tag--arts      { background-color: #f3e5f5; color: #7b1fa2; }
+.activity-tag--academic  { background-color: #e3f2fd; color: #1565c0; }
+.activity-tag--community { background-color: #fff3e0; color: #e65100; }
+.activity-tag--technology{ background-color: #e8eaf6; color: #3949ab; }
+
+/* Activity tag type colours — dark mode */
+[data-theme="dark"] .activity-tag--sports    { background-color: #1b5e20; color: #a5d6a7; }
+[data-theme="dark"] .activity-tag--arts      { background-color: #4a148c; color: #ce93d8; }
+[data-theme="dark"] .activity-tag--academic  { background-color: #0d47a1; color: #90caf9; }
+[data-theme="dark"] .activity-tag--community { background-color: #bf360c; color: #ffcc80; }
+[data-theme="dark"] .activity-tag--technology{ background-color: #1a237e; color: #9fa8da; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .activity-tag--sports    { background-color: #1b5e20; color: #a5d6a7; }
+  :root:not([data-theme="light"]) .activity-tag--arts      { background-color: #4a148c; color: #ce93d8; }
+  :root:not([data-theme="light"]) .activity-tag--academic  { background-color: #0d47a1; color: #90caf9; }
+  :root:not([data-theme="light"]) .activity-tag--community { background-color: #bf360c; color: #ffcc80; }
+  :root:not([data-theme="light"]) .activity-tag--technology{ background-color: #1a237e; color: #9fa8da; }
 }
 
 /* Capacity Indicator */
@@ -663,4 +746,35 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  margin-right: 8px;
+}
+
+.theme-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover .theme-icon {
+  transform: scale(1.1);
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .icon-button {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] #logout-button {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] #logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
